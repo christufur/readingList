@@ -1,0 +1,211 @@
+/* Modern Upload Form Styling */
+
+/* General Layout */
+body {
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+/* Form Layout */
+.book-form-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+form {
+    flex: 2;
+}
+
+.form-image {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #7f8c8d;
+}
+
+.image-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-image p {
+    font-size: 0.9rem;
+    max-width: 200px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 99%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f8f9fa;
+}
+
+input::placeholder {
+    color: #95a5a6;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.submit-btn {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+select {
+    width: 101%;
+}
+
+/* Status Colors */
+select option[value="To Read"] {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+select option[value="In Progress"] {
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+select option[value="Completed"] {
+    background-color: rgba(39, 174, 96, 0.1);
+}
+
+select option[value="Did Not Finish"] {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Message Styling */
+#message {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#message:empty {
+    display: none;
+}
+
+.success-message {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: #27ae60;
+}
+
+.error-message {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+/* Navigation */
+.nav-links {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #3498db;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Credit */
+.credit {
+    font-size: 12px;
+    margin-top: 40px;
+    text-align: center;
+    color: #95a5a6;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px 15px;
+    }
+    
+    .book-form-container {
+        flex-direction: column;
+    }
+    
+    .form-image {
+        order: -1;
+        margin-bottom: 20px;
+    }
+}
