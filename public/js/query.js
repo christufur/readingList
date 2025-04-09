@@ -18,7 +18,8 @@ async function loadAllBooks() {
         if (books.length === 0) {
             document.getElementById('filteredResults').innerHTML = `
                 <div class="empty-state">
-                    <p>Your reading list is empty. Start adding some books!</p>
+                    <p>Your reading list is empty.</p>
+                    <p>Go to the "Add Book" page to add books to your collection.</p>
                 </div>
             `;
             return;
@@ -34,6 +35,8 @@ async function loadAllBooks() {
         
         // Populate tag filters
         const tagFiltersContainer = document.getElementById('tagFilters');
+        tagFiltersContainer.innerHTML = ''; // Clear existing tags first
+        
         if (allTags.size > 0) {
             Array.from(allTags).forEach(tag => {
                 const tagSpan = document.createElement('span');
@@ -56,43 +59,6 @@ async function loadAllBooks() {
         console.error('Error loading books:', error);
         document.getElementById('filteredResults').innerHTML = `<p>Error loading books: ${error.message}</p>`;
     }
-}
-
-// Function to add book to reading list
-function addToReadingList(title, author, year) {
-    console.log('Adding to reading list:', title, author, year);
-    
-    const bookData = {
-        title: title,
-        author: author,
-        publishYear: parseInt(year) || new Date().getFullYear(),
-        status: 'To Read',
-        tags: []
-    };
-    
-    fetch('/book', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bookData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Failed to add book: ${response.statusText}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert(`"${title}" has been added to your reading list!`);
-        
-        // Reload books to update the filtered list
-        loadAllBooks();
-    })
-    .catch(error => {
-        console.error('Error adding to reading list:', error);
-        alert(`Error adding book to your list: ${error.message}`);
-    });
 }
 
 // Function to apply all filters
@@ -182,7 +148,7 @@ function displayFilteredBooks(books) {
         if (book.tags && book.tags.length > 0) {
             tagsHtml = '<div class="book-tags">';
             book.tags.forEach(tag => {
-                tagsHtml += `<span class="tag">${tag} </span>`;
+                tagsHtml += `<span class="tag">${tag}</span>`;
             });
             tagsHtml += '</div>';
         }
