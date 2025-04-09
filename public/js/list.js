@@ -1,14 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await loadBooks();
     
-    // Add toggle functionality for filter panel
-    const filterTitle = document.querySelector('.filter-title');
-    if (filterTitle) {
-        filterTitle.addEventListener('click', () => {
-            filterTitle.classList.toggle('active');
-            document.querySelector('.filter-content').classList.toggle('active');
-        });
-    }
 });
 
 async function loadBooks() {
@@ -21,8 +13,7 @@ async function loadBooks() {
         if (books.length === 0) {
             bookListDiv.innerHTML = `
                 <div class="empty-state">
-                    <p>Your reading list is empty. Start adding some books!</p>
-                    <a href="/upload" class="add-book-btn">Add Your First Book</a>
+                    <p>Your bookshelf is empty. Start adding some books!</p>
                 </div>
             `;
         } else {
@@ -33,32 +24,6 @@ async function loadBooks() {
                     book.tags.forEach(tag => allTags.add(tag));
                 }
             });
-            
-            // Create filter controls if there are tags
-            let filterHtml = '';
-            if (allTags.size > 0) {
-                filterHtml = `
-                    <div class="filter-controls">
-                        <div class="filter-title">
-                            <h3>Filter Your Reading List</h3>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="filter-content">
-                            <div class="filter-group">
-                                <label>Filter by Tags:</label>
-                                <div class="tag-filters">
-                                    ${Array.from(allTags).map(tag => 
-                                        `<span class="tag-filter" data-tag="${tag}">${tag}</span>`
-                                    ).join('')}
-                                </div>
-                            </div>
-                            <button id="clear-filters" class="clear-btn">Clear Filters</button>
-                        </div>
-                    </div>
-                `;
-            }
             
             // Group books by status
             const booksByStatus = {
@@ -77,7 +42,7 @@ async function loadBooks() {
             });
             
             // Create the kanban board
-            let html = filterHtml + '<div class="kanban-board">';
+            let html = '<div class="kanban-board">';
             
             // Define the status order and icons
             const statusConfig = [

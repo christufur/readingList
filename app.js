@@ -4,10 +4,9 @@ const path = require('path');
 
 // Initialize Express
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // MongoDB Connection
-const MONGODB_URI = 'mongodb://localhost:27017/bookstore';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bookstore';
 
 // Only connect if not already connected
 if (mongoose.connection.readyState === 0) {
@@ -22,6 +21,11 @@ const Book = require('./models/book');
 // Middleware for parsing request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+  });
 
 // ===== API ROUTES =====
 // These must come BEFORE the static middleware
@@ -63,17 +67,6 @@ app.get('/books', async (req, res) => {
     }
 });
 
-// GET route for querying books
-app.get('/books/query', async(req, res) => {
-    try {
-        // We're not using this endpoint anymore since we're doing filtering client-side
-        // But we'll keep it for backward compatibility
-        const books = await Book.find();
-        res.json(books);
-    } catch(error){
-        res.status(500).json({message: error.message});
-    }
-});
 
 // POST route as an alternative to DELETE
 app.post('/book/delete/:id', async(req, res) => {
@@ -149,7 +142,12 @@ app.get('/query', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'query.html'));
 });
 
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
+
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const PORT = process.env.PORT || 26053;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });

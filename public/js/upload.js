@@ -31,7 +31,7 @@ async function handleFormSubmit(e) {
         
         if (response.ok) {
             const messageElement = document.getElementById('message');
-            messageElement.textContent = '✓ Book added successfully to your reading list!';
+            messageElement.textContent = '✓ Book added successfully to the bookshelf!';
             messageElement.className = 'success-message';
             document.getElementById('bookForm').reset();
             

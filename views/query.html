@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Filter Books</title>
+    <link rel="stylesheet" href="/css/query.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Book Search and Filtering</h1>
+    </header>
+
+    <main>
+        <section class="query-container">
+
+            <div class="filter-section">
+                <h2>Filter Your Bookshelf</h2>
+                
+                <div class="filter-group">
+                    <label for="statusFilter">Filter by Status:</label>
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="To Read">To Read</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Did Not Finish">Did Not Finish</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Filter by Tags:</label>
+                    <div id="tagFilters" class="tag-filters">
+                        <!-- Tags will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="yearFilter">Filter by Year:</label>
+                    <div class="year-range">
+                        <input type="number" id="yearMin" placeholder="From Year">
+                        <span>to</span>
+                        <input type="number" id="yearMax" placeholder="To Year">
+                    </div>
+                </div>
+                
+                <button id="applyFilters" class="primary-btn">Apply Filters</button>
+                <button id="clearFilters" class="clear-btn">Clear Filters</button>
+            </div>
+        </section>
+
+        <section id="filteredBooks" class="filtered-books">
+            <h2>Filtered Books</h2>
+            <div id="filteredResults" class="book-grid">
+                <!-- Filtered results will be displayed here -->
+            </div>
+        </section>
+
+        <div class="nav-links">
+            <a href="/list">View Bookshelf</a>
+            <a href="/upload">Add Book</a>
+        </div>
+    </main>
+    <script src="/js/query.js"></script>
+</body>
+</html>
