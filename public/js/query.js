@@ -122,7 +122,7 @@ function displayFilteredBooks(books) {
         filteredResultsDiv.innerHTML = `
             <div class="empty-state">
                 <p>No books match your filters.</p>
-                <p>Try adjusting your filter criteria or add more books to your list.</p>
+                <p>Try changing the filters or adding more books to the shelf.</p>
             </div>
         `;
         return;
@@ -148,7 +148,7 @@ function displayFilteredBooks(books) {
         if (book.tags && book.tags.length > 0) {
             tagsHtml = '<div class="book-tags">';
             book.tags.forEach(tag => {
-                tagsHtml += `<span class="tag">${tag}</span>`;
+                tagsHtml += `<span class="tag">${tag} </span>`;
             });
             tagsHtml += '</div>';
         }

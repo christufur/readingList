@@ -15,6 +15,18 @@ body {
     color: #333;
 }
 
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
 h1 {
     color: #2c3e50;
     text-align: center;
@@ -323,6 +335,14 @@ h1 {
     border: 2px dashed #ddd;
     border-radius: 8px;
     margin: 20px 0;
+}
+
+/* Credit */
+.credit {
+    font-size: 12px;
+    margin-top: 40px;
+    text-align: center;
+    color: #95a5a6;
 }
 
 .empty-results p, .empty-state p {
